@@ -195,4 +195,9 @@ header {
     padding: 20px 30px;
   }
 }
+@media (max-width: 576px) {
+  header {
+    padding: 10px;
+  }
+}
 </style>
