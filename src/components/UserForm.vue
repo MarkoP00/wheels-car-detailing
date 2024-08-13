@@ -298,7 +298,6 @@ textarea:focus {
 }
 
 .formGroup textarea {
-  padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -340,7 +339,7 @@ textarea:focus {
     padding: 20px;
   }
   main {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 </style>
