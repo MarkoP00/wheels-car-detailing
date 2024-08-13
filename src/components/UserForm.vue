@@ -207,7 +207,7 @@ function closePopup() {
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 150px;
@@ -335,6 +335,12 @@ textarea:focus {
     left: 30%;
     bottom: -5%;
     width: 40%;
+  }
+  form {
+    padding: 20px;
+  }
+  main {
+    padding: 0 10px;
   }
 }
 </style>
