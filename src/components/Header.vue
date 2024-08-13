@@ -203,7 +203,7 @@ header {
 /* image */
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 100svh;
   width: 100%;
   overflow: hidden;
   display: flex;
