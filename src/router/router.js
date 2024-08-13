@@ -1,11 +1,13 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Services from "@/pages/Services.vue";
 import UserForm from "@/components/UserForm.vue";
+import TitleDesc from "@/pages/TitleDesc.vue";
 import App from "@/App.vue";
 
 const routes = [
   { path: "/", component: App },
   { path: "/services", component: Services },
+  { path: "/about", component: Services },
   { path: "/contact", component: UserForm },
 ];
 

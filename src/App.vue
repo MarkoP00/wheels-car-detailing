@@ -1,13 +1,15 @@
 <template>
-  <Header></Header>
-  <TitleDesc></TitleDesc>
+  <NavigationMenu></NavigationMenu>
+  <LandingPage></LandingPage>
+  <TitleDesc id="about"></TitleDesc>
   <Services id="services"></Services>
   <ComercVideo id="video"></ComercVideo>
   <UserForm></UserForm>
 </template>
 
 <script setup>
-import Header from "./components/Header.vue";
+import NavigationMenu from "./components/NavigationMenu.vue";
+import LandingPage from "./components/LandingPage.vue";
 import TitleDesc from "./pages/TitleDesc.vue";
 import Services from "./pages/Services.vue";
 import ComercVideo from "./components/ComercVideo.vue";
