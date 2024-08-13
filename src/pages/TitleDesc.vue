@@ -25,7 +25,7 @@ import ImagesHover from "../components/ImagesHover.vue";
 <style scoped>
 section {
   min-height: 40vh;
-  padding: 20px;
+  
 }
 
 main {
