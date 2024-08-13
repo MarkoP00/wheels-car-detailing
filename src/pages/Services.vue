@@ -282,6 +282,9 @@ main {
 }
 
 @media (max-width: 376px) {
+  main {
+    padding: 10px;
+  }
   .servicesTitle::after {
     left: 30%;
     bottom: -5%;

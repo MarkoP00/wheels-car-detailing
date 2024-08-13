@@ -71,6 +71,9 @@ main {
 }
 
 @media (max-width: 376px) {
+  main {
+    padding: 10px;
+  }
   .comercText::before {
     left: 30%;
     bottom: -5%;
