@@ -59,9 +59,11 @@ import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
 import Button from "../global/Button.vue";
 import { useRouter } from "vue-router";
+import image1 from "../assets/bg-light.jpg";
+import image2 from "../assets/bg.jpg";
 const router = useRouter();
 const isMenuOpen = ref(false);
-const bgImageSource = ref("/src/assets/bg.jpg");
+const bgImageSource = ref(image2);
 
 const menuIconChange = computed(() =>
   isMenuOpen.value ? "fa-solid fa-xmark" : "fa-solid fa-bars"
@@ -71,10 +73,9 @@ function toggleMenu() {
 }
 
 setInterval(() => {
-  bgImageSource.value = "/src/assets/bg-light.jpg";
-
+  bgImageSource.value = image1;
   setTimeout(() => {
-    bgImageSource.value = "/src/assets/bg.jpg";
+    bgImageSource.value = image2;
   }, 1000);
 }, 2000);
 
