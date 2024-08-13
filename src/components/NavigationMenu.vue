@@ -52,6 +52,16 @@ function handleBookButton(route) {
 </script>
 
 <style scoped>
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 100px;
+  width: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #dc3545;
+}
 .links li {
   list-style: none;
 }
@@ -74,17 +84,6 @@ function handleBookButton(route) {
 }
 .links li a:hover::after {
   width: 100%;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px 100px;
-  width: 100%;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.7);
-  border-bottom: 1px solid #dc3545;
 }
 .logo {
   width: 200px;

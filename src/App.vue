@@ -36,6 +36,9 @@ section {
   justify-content: center;
   align-items: center;
 }
+body {
+  min-height: 100svh;
+}
 strong {
   color: #dc3545;
   font-weight: 800;
@@ -43,7 +46,5 @@ strong {
 
 html {
   scroll-behavior: smooth;
-}
-.scroll-offset {
 }
 </style>

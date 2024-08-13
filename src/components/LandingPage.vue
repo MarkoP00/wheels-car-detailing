@@ -63,7 +63,7 @@ function handleBookButton(route) {
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 100%;
+  height: 100svh;
   object-fit: cover;
   background-repeat: no-repeat;
 }
