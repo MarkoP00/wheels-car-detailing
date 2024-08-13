@@ -49,7 +49,6 @@ function handleBookButton(route) {
 <style scoped>
 /* image */
 .hero {
-  position: relative;
   height: 100svh;
   width: 100%;
   overflow: hidden;
@@ -63,7 +62,7 @@ function handleBookButton(route) {
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 100svh;
+  height: 100%;
   object-fit: cover;
   background-repeat: no-repeat;
 }

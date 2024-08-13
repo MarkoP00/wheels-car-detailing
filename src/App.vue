@@ -36,9 +36,7 @@ section {
   justify-content: center;
   align-items: center;
 }
-body {
-  min-height: 100svh;
-}
+
 strong {
   color: #dc3545;
   font-weight: 800;
