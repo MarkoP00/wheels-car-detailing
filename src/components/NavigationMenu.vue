@@ -17,9 +17,7 @@
         <a href=""> <i class="fa-brands fa-whatsapp"></i> </a>
       </div>
       <button class="toggle_btn" @click="toggleMenu">
-        <transition name="icon-fade">
-          <i :class="menuIconChange" key="menu-icon"></i>
-        </transition>
+        <i :class="['fa-solid', isMenuOpen ? 'fa-xmark' : 'fa-bars']"></i>
       </button>
     </div>
     <div :class="['dropDown', { open: isMenuOpen }]">
@@ -145,6 +143,7 @@ header {
   overflow: hidden;
   display: none;
   transition: 0.5s;
+  animation: fade-in 0.3s;
 }
 .dropDown.open {
   display: block;
@@ -167,7 +166,14 @@ header {
   text-decoration: none;
   color: #fff;
 }
+.toggle_btn i {
+  transition: all 0.2s ease-in-out;
+}
 
+/* Opcionalno možeš podesiti malo više stilova da animacija bude glatka */
+.toggle_btn i.fa-xmark {
+  transform: rotate(180deg);
+}
 @media (max-width: 990px) {
   .navbar .links,
   .social {
@@ -197,6 +203,15 @@ header {
 @media (max-width: 576px) {
   header {
     padding: 10px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
