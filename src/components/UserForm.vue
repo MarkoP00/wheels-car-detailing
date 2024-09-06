@@ -334,11 +334,6 @@ textarea:focus {
   border: 1px solid #dc3545;
 }
 
-@media (max-width: 540px) {
-  form {
-    width: 200px;
-  }
-}
 @media (max-width: 376px) {
   .formText::before {
     left: 30%;
