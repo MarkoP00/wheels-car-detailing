@@ -135,7 +135,6 @@ main {
   gap: 100px;
   max-width: 1000px;
   text-align: center;
-  padding: 20px;
   border-radius: 8px;
 }
 .servicesTitle {
