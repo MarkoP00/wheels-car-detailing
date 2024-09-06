@@ -27,7 +27,6 @@ import UserForm from "./components/UserForm.vue";
   text-decoration: none;
   color: #fff;
   font-size: 18px;
-  background: rgb(0 100 0 /0.1) !important;
 }
 main {
   margin-top: 100px;
