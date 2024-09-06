@@ -243,9 +243,10 @@ main {
 }
 
 form {
-  max-width: 600px;
+  width: 500px;
+  min-width: 300px;
   background: rgba(0, 0, 0, 0.6);
-  padding: 40px;
+  padding: 20px;
   border-radius: 8px;
   margin: 0 auto;
   border: 1px solid #dc3545;
@@ -334,6 +335,11 @@ textarea:focus {
   border: 1px solid #dc3545;
 }
 
+@media (max-width: 540px) {
+  form {
+    width: 200px;
+  }
+}
 @media (max-width: 376px) {
   .formText::before {
     left: 30%;
