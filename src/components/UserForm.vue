@@ -211,8 +211,7 @@ section {
 main {
   max-width: 1000px;
   margin: 0 auto;
-  /* padding: 0 20px; */
-  /* changed */
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 150px;
@@ -348,9 +347,6 @@ textarea:focus {
   }
   form {
     padding: 20px;
-  }
-  main {
-    padding: 0 5px;
   }
 }
 </style>
