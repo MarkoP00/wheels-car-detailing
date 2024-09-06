@@ -204,10 +204,15 @@ function closePopup() {
 </script>
 
 <style scoped>
+section {
+  padding: 0px;
+  /* added */
+}
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+  /* padding: 0 20px; */
+  /* changed */
   display: flex;
   flex-direction: column;
   gap: 150px;
