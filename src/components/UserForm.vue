@@ -211,7 +211,7 @@ section {
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 150px;
@@ -334,6 +334,19 @@ textarea:focus {
   border: 1px solid #dc3545;
 }
 
+@media (max-width: 540px) {
+  form {
+    width: 350px;
+  }
+}
+@media (max-width: 425px) {
+  form {
+    width: 350px;
+  }
+  main {
+    padding: 0;
+  }
+}
 @media (max-width: 376px) {
   .formText::before {
     left: 30%;
@@ -341,7 +354,7 @@ textarea:focus {
     width: 40%;
   }
   form {
-    padding: 20px;
+    width: 300px;
   }
 }
 </style>
