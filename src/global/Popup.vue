@@ -1,7 +1,12 @@
 <template>
-  <section class="popupOverlay" @click="closePopup">
+  <section
+    class="popupOverlay"
+    @click="closePopup">
     <transition name="fade">
-      <div class="popupContent" v-if="popupVisible" @click.stop>
+      <div
+        class="popupContent"
+        v-if="popupVisible"
+        @click.stop>
         <div class="popupTitle">
           <h3>{{ props.title }}</h3>
         </div>
@@ -9,7 +14,9 @@
           <p>{{ props.message }}</p>
         </div>
         <div class="popupButton">
-          <Button :buttonText="'Okay!'" @click="closePopup"></Button>
+          <Button
+            :buttonText="'Okay!'"
+            @click="closePopup"></Button>
         </div>
       </div>
     </transition>
@@ -26,13 +33,13 @@ const props = defineProps({
   title: String,
   message: String,
 });
-const emit = defineEmits("close-popup");
+const emit = defineEmits(["closePopup"]);
 
 function closePopup() {
   popupVisible.value = false;
 
   setTimeout(() => {
-    emit("close-popup");
+    emit("closePopup");
   }, 300);
 }
 

@@ -16,7 +16,8 @@
     "emailjs-com": "^3.2.0",
     "nodemailer": "^6.9.14",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

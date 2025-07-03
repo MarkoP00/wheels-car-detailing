@@ -1,14 +1,15 @@
 <template>
   <div class="hero">
-    <img :src="bgImageSource" alt="background image" />
+    <img
+      :src="bgImageSource"
+      alt="background image" />
     <div class="text">
       <h4>BECAUSE WE KNOW</h4>
       <h1>HOW MUCH <br /><span class="spec">YOU LOVE</span></h1>
       <h4>YOUR CAR</h4>
       <Button
         :buttonText="'Book your appointment'"
-        @click="() => handleBookButton('#contact')"
-      ></Button>
+        @click="() => handleBookButton('#contact')"></Button>
     </div>
 
     <div class="mobileText">
@@ -18,8 +19,7 @@
       <h4>YOUR CAR</h4>
       <Button
         :buttonText="'Book your appointment'"
-        @click="() => handleBookButton('#contact')"
-      ></Button>
+        @click="() => handleBookButton('#contact')"></Button>
     </div>
   </div>
 </template>
@@ -125,6 +125,11 @@ function handleBookButton(route) {
   }
   .spec {
     color: #dc3545;
+  }
+}
+@media (max-width: 450px) {
+  .hero {
+    height: 70svh;
   }
 }
 </style>

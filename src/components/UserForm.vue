@@ -1,4 +1,5 @@
 <template>
+  <Spinner v-if="isLoading"></Spinner>
   <section id="contact">
     <main>
       <div class="formText">
@@ -12,76 +13,44 @@
           you with the best service possible.
         </p>
       </div>
-      <form>
+      <form class="custom-form">
         <div class="formTitle">
           <h2>Enter your information and our team will contact you</h2>
         </div>
         <div class="formContent">
-          <div class="formGroup">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              id="firstName"
-              placeholder="First name required"
-              v-model="formData.firstName.value"
-              :class="formData.firstName.invalid ? 'invalidInput' : ''"
-              @blur="formData.firstName.invalid = false"
-              autocomplete="off"
-            />
+          <div
+            v-for="(field, key) in formData"
+            :key="key">
+            <div class="formGroup">
+              <label :for="key">{{ field.label }}</label>
+
+              <textarea
+                v-if="field.type === 'textarea'"
+                :id="key"
+                :placeholder="field.placeHolder"
+                v-model="field.value"
+                :class="{ invalidInput: field.invalid }"
+                @blur="field.invalid = false">
+              </textarea>
+
+              <input
+                v-else
+                :id="key"
+                :type="field.type"
+                :placeholder="field.placeHolder"
+                v-model="field.value"
+                :class="{ invalidInput: field.invalid }"
+                @blur="field.invalid = false"
+                autocomplete="off" />
+            </div>
           </div>
           <div class="formGroup">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              placeholder="Last name required"
-              v-model="formData.lastName.value"
-              :class="formData.lastName.invalid ? 'invalidInput' : ''"
-              @blur="formData.lastName.invalid = false"
-            />
-          </div>
-          <div class="formGroup">
-            <label for="lastName">Email</label>
-            <input
-              type="email"
-              id="lastName"
-              placeholder="Email required"
-              v-model="formData.email.value"
-              :class="formData.email.invalid ? 'invalidInput' : ''"
-              @blur="formData.email.invalid = false"
-            />
-          </div>
-          <div class="formGroup">
-            <label for="lastName">Contact Number</label>
-            <input
-              type="number"
-              id="lastName"
-              placeholder="Contact Number required"
-              v-model="formData.contact.value"
-              :class="formData.contact.invalid ? 'invalidInput' : ''"
-              @blur="formData.contact.invalid = false"
-            />
-          </div>
-          <div class="formGroup">
-            <label for="date">Preffered Date</label>
-            <input
-              type="date"
-              id="date"
-              v-model="formData.date.value"
-              :class="formData.date.invalid ? 'invalidInput' : ''"
-              @blur="formData.date.invalid = false"
-            />
-          </div>
-          <div class="formGroup">
-            <label for="notification">Write notification for us</label>
-            <textarea
-              id="notification"
-              placeholder="You can leave this empty..."
-              v-model="formData.notification.value"
-            ></textarea>
-          </div>
-          <div class="formGroup">
-            <button type="button" @click="submitForm">Submit</button>
+            <button
+              type="button"
+              @click="submitForm"
+              class="submit-btn">
+              Submit
+            </button>
           </div>
         </div>
       </form>
@@ -91,109 +60,83 @@
     v-if="popupTitle"
     :title="popupTitle"
     :message="popupMessage"
-    @close-popup="closePopup"
-  ></Popup>
+    @close-popup="closePopup"></Popup>
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
-import emailjs from "emailjs-com";
 import Popup from "../global/Popup.vue";
+import formValidation from "@/services/formValidation";
+import callToast from "@/services/callToast";
+import handleSubmit from "@/services/handleSubmit";
+import Spinner from "@/global/Spinner.vue";
 
 const popupTitle = ref("");
 const popupMessage = ref("");
 
+const isLoading = ref(false);
+
 const formData = reactive({
-  firstName: { value: "", invalid: false },
-  lastName: { value: "", invalid: false },
-  email: { value: "", invalid: false },
-  contact: { value: "", invalid: false },
-  date: { value: "", invalid: false },
-  notification: { value: "" },
+  firstName: {
+    value: "",
+    invalid: false,
+    placeHolder: "John",
+    label: "First Name",
+    type: "text",
+  },
+  lastName: {
+    value: "",
+    invalid: false,
+    placeHolder: "Doe",
+    label: "Last Name",
+    type: "text",
+  },
+  email: {
+    value: "",
+    invalid: false,
+    placeHolder: "johndoe123@gmail.com",
+    label: "Email",
+    type: "email",
+  },
+  contact: {
+    value: "",
+    invalid: false,
+    placeHolder: "+38165123123",
+    label: "Phone number",
+    type: "number",
+  },
+  date: { value: "", invalid: false, label: "Prefered Date", type: "date" },
+  notification: {
+    value: "",
+    placeHolder: "You can leave this empty",
+    label: "Write notification for us",
+    type: "textarea",
+  },
 });
 
-function formValidation() {
-  let functionIsValidated = true;
-  let dataForSubmit = {};
-
-  Object.keys(formData).forEach((key) => {
-    const fieldValue = formData[key].value;
-
-    if (key === "notification") {
-      if (fieldValue) {
-        dataForSubmit[key] = fieldValue;
-      }
-      return;
-    }
-
-    if (key === "email" && (!fieldValue || !fieldValue.includes("@"))) {
-      formData[key].invalid = true;
-      functionIsValidated = false;
-      return;
-    }
-
-    if (key === "contact") {
-      const contactValue = String(fieldValue);
-      if (!contactValue || contactValue.length < 8) {
-        formData[key].invalid = true;
-        functionIsValidated = false;
-        return;
-      }
-    }
-    if (!fieldValue || fieldValue.length < 5) {
-      formData[key].invalid = true;
-      functionIsValidated = false;
-    } else {
-      formData[key].invalid = false;
-      dataForSubmit[key] = fieldValue;
-    }
-  });
-
-  return { functionIsValidated, dataForSubmit };
-}
-
 async function submitForm() {
-  const { functionIsValidated, dataForSubmit } = formValidation();
+  const { formIsValid, dataForSubmit } = formValidation(formData);
 
-  if (!functionIsValidated) {
+  if (!formIsValid) {
+    callToast("Invalid form. Please check all fields.", "warning");
     return;
   }
 
-  const response = await fetch(
-    "https://comercialweb-1d213-default-rtdb.firebaseio.com/form.json",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataForSubmit),
-    }
-  );
+  isLoading.value = true;
 
-  if (response.ok) {
+  const submissionSuccess = await handleSubmit(dataForSubmit);
+
+  if (submissionSuccess) {
+    isLoading.value = false;
+
     popupTitle.value = "Success!";
     popupMessage.value =
-      "We have recieved your booking application and our team will contact you as soon as possible!";
-
-    // sending confirmation email
-    const serviceID = "service_xob51ys";
-    const templateID = "template_xu0p1nm";
-    const userID = "n8SCu9ix_klWQ5LQq";
-
-    const emailParams = {
-      firstName: dataForSubmit.firstName,
-      lastName: dataForSubmit.lastName,
-      email: dataForSubmit.email,
-      contact: dataForSubmit.contact,
-      date: dataForSubmit.date,
-      notification: dataForSubmit.notification,
-    };
-
-    await emailjs.send(serviceID, templateID, emailParams, userID);
+      "We have recieved your booking request. Our team will contact you shortly!";
   } else {
-    popupTitle.value = "Fail...";
-    popupMessage.value =
-      "Something went wrong... We will fix this issue as soon as possible! Please, contact us on our local phone number.";
+    isLoading.value = false;
+
+    popupTitle.value = "Something went wrong...";
+    popupMessage.value = "Please try again later.";
   }
 }
 
@@ -211,7 +154,6 @@ section {
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 150px;
@@ -241,120 +183,183 @@ main {
   letter-spacing: 1.5px;
 }
 
-form {
-  width: 500px;
+/* Form Container */
+.custom-form {
+  width: 600px;
   min-width: 300px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 8px;
-  margin: 0 auto;
-  border: 1px solid #dc3545;
-  margin-bottom: 100px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 0 auto 100px;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.1);
+  transition: all 0.3s ease;
 }
+
+.custom-form:hover {
+  border-color: rgba(220, 53, 69, 0.6);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.2);
+}
+
 .formTitle {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
+
 .formTitle h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  color: rgb(220, 53, 69);
+  color: #dc3545;
+  text-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+  letter-spacing: 0.5px;
 }
+
 .formContent {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1.8rem;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .formGroup label {
-  margin-bottom: 5px;
-  font-size: 20px;
-  color: #fff;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(100%); /* Obojava ikonicu u belo */
-  cursor: pointer;
-}
-
+/* Input Fields */
 input,
 textarea {
   color: #fff;
-  background-color: #212121;
-  height: 40px;
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 5px;
+  background-color: rgba(33, 33, 33, 0.8);
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 input:focus,
 textarea:focus {
-  color: fff;
-  background-color: #212121;
-  outline-color: rgb(220, 53, 69);
-  box-shadow: -3px -3px 15px rgb(220, 53, 69);
-  transition: 0.1s;
-  transition-property: box-shadow;
-}
-
-.formGroup textarea {
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-color: rgba(220, 53, 69, 0.8);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3);
+  background-color: rgba(33, 33, 33, 1);
   outline: none;
 }
 
+/* textarea */
 .formGroup textarea {
+  min-height: 120px;
   resize: vertical;
-  height: 100px;
+  line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: #dc3545 rgba(33, 33, 33, 0.8);
 }
 
-.formGroup button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #dc3545;
-  border: none;
+.formGroup textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.formGroup textarea::-webkit-scrollbar-track {
+  background: rgba(33, 33, 33, 0.8);
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.formGroup button:hover {
-  background-color: #771b25;
+.formGroup textarea::-webkit-scrollbar-thumb {
+  background-color: #dc3545;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.formGroup textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #c82333;
+}
+
+/* date */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.submit-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #ab212e, #bb2232);
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* invalid status + animation */
 .invalidInput {
-  outline-color: rgb(220, 53, 69);
-  box-shadow: -3px -3px 15px rgb(220, 53, 69);
-  border: 1px solid #dc3545;
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3) !important;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
 }
 
 @media (max-width: 540px) {
-  form {
-    width: 350px;
+  .custom-form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .formTitle h2 {
+    font-size: 1.2rem;
   }
 }
+
 @media (max-width: 425px) {
-  form {
-    width: 350px;
+  .formContent {
+    gap: 1.2rem;
   }
-  main {
-    padding: 0;
-  }
-}
-@media (max-width: 376px) {
-  .formText::before {
-    left: 30%;
-    bottom: -5%;
-    width: 40%;
-  }
-  form {
-    width: 300px;
+
+  input,
+  textarea {
+    padding: 0.7rem;
   }
 }
 </style>

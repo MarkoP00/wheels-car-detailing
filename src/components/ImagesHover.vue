@@ -1,9 +1,17 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <input type="radio" name="slide" id="c1" checked />
-      <label for="c1" class="card">
-        <img src="/src/assets/hoverImages/clean.jpg" alt="" />
+      <input
+        type="radio"
+        name="slide"
+        id="c1"
+        checked />
+      <label
+        for="c1"
+        class="card">
+        <img
+          src="/src/assets/hoverImages/clean.jpg"
+          alt="" />
         <div class="row">
           <div class="icon">1</div>
           <div class="description">
@@ -12,9 +20,16 @@
           </div>
         </div>
       </label>
-      <input type="radio" name="slide" id="c2" />
-      <label for="c2" class="card">
-        <img src="/src/assets/hoverImages/rims.jpg" alt="" />
+      <input
+        type="radio"
+        name="slide"
+        id="c2" />
+      <label
+        for="c2"
+        class="card">
+        <img
+          src="/src/assets/hoverImages/rims.jpg"
+          alt="" />
         <div class="row">
           <div class="icon">2</div>
           <div class="description">
@@ -23,9 +38,16 @@
           </div>
         </div>
       </label>
-      <input type="radio" name="slide" id="c3" />
-      <label for="c3" class="card">
-        <img src="/src/assets/hoverImages/inside.jpg" alt="" />
+      <input
+        type="radio"
+        name="slide"
+        id="c3" />
+      <label
+        for="c3"
+        class="card">
+        <img
+          src="/src/assets/hoverImages/inside.jpg"
+          alt="" />
         <div class="row">
           <div class="icon">3</div>
           <div class="description">
@@ -34,9 +56,16 @@
           </div>
         </div>
       </label>
-      <input type="radio" name="slide" id="c4" />
-      <label for="c4" class="card">
-        <img src="/src/assets/hoverImages/bmw.jpg" alt="" />
+      <input
+        type="radio"
+        name="slide"
+        id="c4" />
+      <label
+        for="c4"
+        class="card">
+        <img
+          src="/src/assets/hoverImages/bmw.jpg"
+          alt="" />
         <div class="row">
           <div class="icon">4</div>
           <div class="description">
@@ -96,6 +125,8 @@
   margin: 15px;
 }
 .card > .row > .description {
+  /* position: relative;
+  left: 20%; */
   display: flex;
   justify-content: center;
   flex-direction: column;

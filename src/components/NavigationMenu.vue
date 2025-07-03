@@ -1,8 +1,12 @@
 <template>
   <header>
     <div class="navbar">
-      <div class="logo" @click="() => handleBookButton('/')">
-        <img src="/src/assets/car-logo.png" alt="" />
+      <div
+        class="logo"
+        @click="() => handleBookButton('/')">
+        <img
+          src="/src/assets/car-logo.png"
+          alt="" />
       </div>
       <ul class="links">
         <li><router-link to="/">Home</router-link></li>
@@ -14,18 +18,27 @@
       <div class="social">
         <a href=""> <i class="fa-brands fa-facebook-f"></i></a>
         <a href=""> <i class="fa-brands fa-x-twitter"></i></a>
-        <a href=""> <i class="fa-brands fa-whatsapp"></i> </a>
+        <a href=""> <i class="fa-brands fa-instagram"></i> </a>
       </div>
-      <button class="toggle_btn" @click="toggleMenu">
+      <button
+        class="toggle_btn"
+        @click="toggleMenu">
         <i :class="['fa-solid', isMenuOpen ? 'fa-xmark' : 'fa-bars']"></i>
       </button>
     </div>
     <div :class="['dropDown', { open: isMenuOpen }]">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="#about">About</router-link></li>
-      <li><router-link to="#services">Services</router-link></li>
-      <li><router-link to="#video">Video</router-link></li>
-      <li><router-link to="#contact">Contact</router-link></li>
+      <ul class="dropDown-list">
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="#about">About</router-link></li>
+        <li><router-link to="#services">Services</router-link></li>
+        <li><router-link to="#video">Video</router-link></li>
+        <li><router-link to="#contact">Contact</router-link></li>
+      </ul>
+      <div class="dropSocial">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
     </div>
   </header>
 </template>
@@ -133,44 +146,109 @@ header {
   visibility: hidden;
   transition: 0.2s all;
 }
+/* drop down menu */
+
 .dropDown {
   position: absolute;
   right: 2rem;
-  top: 110px;
-  width: 300px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
+  top: 100px;
+  width: 280px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
   overflow: hidden;
-  display: none;
-  transition: 0.5s;
-  animation: fade-in 0.3s;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-out;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
 }
+
 .dropDown.open {
-  display: block;
-  transition: 0.5s;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
+
+/* Menu List */
+.dropDown-list {
+  padding: 10px 0;
+  margin: 0;
+}
+
 .dropDown li {
   list-style: none;
-  padding: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  transition: 0.2s;
+  padding: 0.8rem 1.5rem;
+  transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+  border-left: 3px solid transparent;
 }
+
 .dropDown li:hover {
-  background-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.3);
+  border-left: 3px solid #dc3545;
 }
+
 .dropDown li a {
   text-decoration: none;
   color: #fff;
-}
-.toggle_btn i {
-  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  display: block;
+  transition: all 0.2s;
 }
 
-/* Opcionalno možeš podesiti malo više stilova da animacija bude glatka */
+.dropDown li:hover a {
+  transform: translateX(5px);
+  color: #dc3545;
+}
+
+.dropSocial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dropSocial a {
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 53, 69, 0.3);
+}
+
+.dropSocial a:hover {
+  background: #dc3545;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropDown.open {
+  animation: fadeIn 0.3s ease-out forwards;
+}
 .toggle_btn i.fa-xmark {
   transform: rotate(180deg);
 }
@@ -200,9 +278,9 @@ header {
     padding: 20px 30px;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 450px) {
   header {
-    padding: 10px;
+    padding: 10px 20px;
   }
 }
 

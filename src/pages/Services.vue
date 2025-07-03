@@ -15,107 +15,25 @@
       </div>
       <!-- cards -->
       <div class="cardsMain">
-        <div class="card">
+        <div
+          class="card"
+          v-for="item in cards"
+          :key="item.para"
+          :class="{ active: item.active }"
+          @click="activateCard(item.id)">
           <div class="card-img">
-            <img src="/src/assets/flipImages/bmwent.jpg" alt="" />
+            <img
+              :src="`/src/assets/flipImages/${item.imageSource}`"
+              alt="" />
           </div>
           <div class="card-body">
             <span class="bg"></span>
             <span class="bg"></span>
             <span class="bg"></span>
             <div class="content">
-              <h2 class="title">Interior</h2>
+              <h2 class="title">{{ item.title }}</h2>
               <p class="para">
-                Get a spotless interior with our deep cleaning service. We clean
-                carpets, seats, and more, leaving your vehicle looking fresh and
-                new.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-img">
-            <img src="/src/assets/flipImages/engine2.jpg" alt="" />
-          </div>
-          <div class="card-body">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <div class="content">
-              <h2 class="title">Engine</h2>
-              <p class="para">
-                Revitalize your engine bay with our meticulous cleaning. We
-                remove grime and dirt, ensuring a cleaner and better-performing
-                engine.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="/src/assets/flipImages/ceramic.jpg" alt="" />
-          </div>
-          <div class="card-body">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <div class="content">
-              <h2 class="title">Ceramic Coating</h2>
-              <p class="para">
-                Protect your vehicle's paint with our durable ceramic coating,
-                offering a sleek, long-lasting shine.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="/src/assets/flipImages/light-polish.jpg" alt="" />
-          </div>
-          <div class="card-body">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <div class="content">
-              <h2 class="title">Headlight Polish</h2>
-              <p class="para">
-                Restore clarity to your headlights with our expert polishing,
-                ensuring better visibility and a refreshed look.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="/src/assets/flipImages/bmw-backLight.jpg" alt="" />
-          </div>
-          <div class="card-body">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <div class="content">
-              <h2 class="title">Glass Shine</h2>
-              <p class="para">
-                Achieve a glass-like finish with our premium car shine service,
-                leaving your vehicle gleaming.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-img">
-            <img src="/src/assets/flipImages/glass.jpg" alt="" />
-          </div>
-          <div class="card-body">
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <span class="bg"></span>
-            <div class="content">
-              <h2 class="title">Glass</h2>
-              <p class="para">
-                Keep your glass spotless and clear with our specialized
-                treatment that prevents water stains.
+                {{ item.para }}
               </p>
             </div>
           </div>
@@ -124,6 +42,65 @@
     </main>
   </section>
 </template>
+
+<script setup>
+import { ref } from "vue";
+
+const cards = ref([
+  {
+    title: "Interior",
+    para: "Get a spotless interior with our deep cleaning service. We clean carpets, seats, and more, leaving your vehicle looking fresh and new.",
+    imageSource: "bmwent.jpg",
+    active: false,
+    id: 1,
+  },
+  {
+    title: "Engine",
+    para: "Revitalize your engine bay with our meticulous cleaning. We remove grime and dirt, ensuring a cleaner and better-performing engine.",
+    imageSource: "engine2.jpg",
+    active: false,
+    id: 2,
+  },
+  {
+    title: "Ceramic Coating",
+    para: "Protect your vehicle's paint with our durable ceramic coating, offering a sleek, long-lasting shine.",
+    imageSource: "ceramic.jpg",
+    active: false,
+    id: 3,
+  },
+  {
+    title: "Headlight Polish",
+    para: "Restore clarity to your headlights with our expert polishing, ensuring better visibility and a refreshed look.",
+    imageSource: "light-polish.jpg",
+    active: false,
+    id: 4,
+  },
+  {
+    title: "Protection + Shine",
+    para: "Our deep-clean polish doesn’t just shine—it seals your paint with a layer that repels dirt and enhances durability",
+    imageSource: "bmw-backLight.jpg",
+    active: false,
+    id: 5,
+  },
+  {
+    title: "Glass",
+    para: "Keep your glass spotless and clear with our specialized treatment that prevents water stains.",
+    imageSource: "glass.jpg",
+    active: false,
+    id: 6,
+  },
+]);
+
+function activateCard(cardId) {
+  cards.value.forEach((card) => {
+    if (card.id === cardId) {
+      card.active = !card.active;
+    } else {
+      card.active = false;
+    }
+  });
+}
+</script>
 
 <style scoped>
 section {
@@ -182,6 +159,12 @@ main {
   position: relative;
   transform-style: preserve-3d;
   transition: 0.5s;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px rgb(220, 53, 69, 0.8);
 }
 
 .card-img {
@@ -210,7 +193,7 @@ main {
   border: 5px solid #dc3545;
 }
 
-.card:hover {
+.card.active {
   transform: rotateY(180deg);
 }
 
@@ -246,16 +229,16 @@ main {
   transform: rotate(-10deg);
 }
 
-.card:hover .card-body .bg {
+.card.active .card-body .bg {
   width: 200%;
   transition-delay: 0.5s;
 }
 
-.card:hover .card-body .bg:nth-child(2) {
+.card.active .card-body .bg:nth-child(2) {
   transition-delay: 1s;
 }
 
-.card:hover .card-body .bg:nth-child(3) {
+.card.active .card-body .bg:nth-child(3) {
   transition-delay: 1.5s;
 }
 
@@ -276,7 +259,7 @@ main {
 .para {
   color: #fff;
 }
-.card:hover .content {
+.card.active .content {
   opacity: 1;
   transition-delay: 2s;
 }
