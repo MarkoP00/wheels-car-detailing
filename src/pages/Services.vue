@@ -23,7 +23,7 @@
           @click="activateCard(item.id)">
           <div class="card-img">
             <img
-              :src="`/src/assets/flipImages/${item.imageSource}`"
+              :src="item.imageSource"
               alt="" />
           </div>
           <div class="card-body">
@@ -45,47 +45,53 @@
 
 <script setup>
 import { ref } from "vue";
+import bmwEnt from "@/assets/flipImages/bmwent.jpg";
+import engine from "@/assets/flipImages/engine2.jpg";
+import ceramic from "@/assets/flipImages/ceramic.jpg";
+import lightPolish from "@/assets/flipImages/light-polish.jpg";
+import backlight from "@/assets/flipImages/bmw-backLight.jpg";
+import glass from "@/assets/flipImages/glass.jpg";
 
 const cards = ref([
   {
     title: "Interior",
     para: "Get a spotless interior with our deep cleaning service. We clean carpets, seats, and more, leaving your vehicle looking fresh and new.",
-    imageSource: "bmwent.jpg",
+    imageSource: bmwEnt,
     active: false,
     id: 1,
   },
   {
     title: "Engine",
     para: "Revitalize your engine bay with our meticulous cleaning. We remove grime and dirt, ensuring a cleaner and better-performing engine.",
-    imageSource: "engine2.jpg",
+    imageSource: engine,
     active: false,
     id: 2,
   },
   {
     title: "Ceramic Coating",
     para: "Protect your vehicle's paint with our durable ceramic coating, offering a sleek, long-lasting shine.",
-    imageSource: "ceramic.jpg",
+    imageSource: ceramic,
     active: false,
     id: 3,
   },
   {
     title: "Headlight Polish",
     para: "Restore clarity to your headlights with our expert polishing, ensuring better visibility and a refreshed look.",
-    imageSource: "light-polish.jpg",
+    imageSource: lightPolish,
     active: false,
     id: 4,
   },
   {
     title: "Protection + Shine",
     para: "Our deep-clean polish doesn’t just shine—it seals your paint with a layer that repels dirt and enhances durability",
-    imageSource: "bmw-backLight.jpg",
+    imageSource: backlight,
     active: false,
     id: 5,
   },
   {
     title: "Glass",
     para: "Keep your glass spotless and clear with our specialized treatment that prevents water stains.",
-    imageSource: "glass.jpg",
+    imageSource: glass,
     active: false,
     id: 6,
   },

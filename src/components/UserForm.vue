@@ -164,6 +164,7 @@ main {
   gap: 20px;
   text-align: center;
   position: relative;
+  padding: 0 20px;
 }
 .formText h2 {
   color: #dc3545;
