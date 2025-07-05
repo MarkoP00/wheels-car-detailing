@@ -98,7 +98,7 @@ const formData = reactive({
     label: "Email",
     type: "email",
   },
-  contact: {
+  phone: {
     value: "",
     invalid: false,
     placeHolder: "+38165123123",
@@ -147,11 +147,11 @@ function closePopup() {
 </script>
 
 <style scoped>
-section {
+#contact {
   padding: 0px;
   /* added */
 }
-main {
+#contact main {
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
@@ -344,8 +344,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 @media (max-width: 650px) {
   .custom-form {
-    width: 90%;
-    padding: 1.5rem;
+    width: 85%;
+    padding: 1rem;
   }
 
   .formTitle h2 {

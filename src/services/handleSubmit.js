@@ -27,7 +27,7 @@ export default async function handleSubmit(data) {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
-      contact: data.contact,
+      phone: data.phone,
       date: data.date,
       notification: data.notification,
     };

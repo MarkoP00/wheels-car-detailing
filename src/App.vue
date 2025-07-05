@@ -4,7 +4,7 @@
   <TitleDesc id="about"></TitleDesc>
   <Services id="services"></Services>
   <ComercVideo id="video"></ComercVideo>
-  <!-- <UserForm></UserForm> -->
+  <UserForm></UserForm>
 </template>
 
 <script setup>
@@ -13,7 +13,7 @@ import LandingPage from "./components/LandingPage.vue";
 import TitleDesc from "./pages/TitleDesc.vue";
 import Services from "./pages/Services.vue";
 import ComercVideo from "./components/ComercVideo.vue";
-// import UserForm from "./components/UserForm.vue";
+import UserForm from "./components/UserForm.vue";
 </script>
 
 <style>

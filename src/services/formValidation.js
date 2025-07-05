@@ -20,13 +20,13 @@ export default function formValidation(formData) {
       }
     }
 
-    if (key === "contact") {
+    if (key === "phone") {
       if (!fieldValue || fieldValue.length < 6) {
         formData[key].invalid = true;
         formIsValid = false;
       }
     }
-    
+
     if (!fieldValue || fieldValue.length < 3) {
       formData[key].invalid = true;
       formIsValid = false;
