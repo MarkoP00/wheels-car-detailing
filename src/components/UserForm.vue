@@ -342,7 +342,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 650px) {
   .custom-form {
     width: 90%;
     padding: 1.5rem;
