@@ -13,7 +13,7 @@
           you with the best service possible.
         </p>
       </div>
-      <!-- <form class="custom-form">
+      <form class="custom-form">
         <div class="formTitle">
           <h2>Enter your information and our team will contact you</h2>
         </div>
@@ -53,7 +53,7 @@
             </button>
           </div>
         </div>
-      </form> -->
+      </form>
     </main>
   </section>
   <Popup
@@ -186,12 +186,12 @@ function closePopup() {
 
 /* Form Container */
 .custom-form {
-  width: 600px;
-  min-width: 300px;
+  max-width: 600px;
+  min-width: 280px;
   background: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 12px;
-  margin: 0 auto 100px;
+  margin: 0 auto;
   border: 1px solid rgba(220, 53, 69, 0.3);
   box-shadow: 0 10px 30px rgba(220, 53, 69, 0.1);
   transition: all 0.3s ease;
@@ -235,7 +235,7 @@ function closePopup() {
   letter-spacing: 0.3px;
 }
 
-/* Input Fields */
+/* inputs */
 input,
 textarea {
   color: #fff;
