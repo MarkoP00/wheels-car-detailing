@@ -13,7 +13,7 @@
           you with the best service possible.
         </p>
       </div>
-      <form class="custom-form">
+      <!-- <form class="custom-form">
         <div class="formTitle">
           <h2>Enter your information and our team will contact you</h2>
         </div>
@@ -53,7 +53,7 @@
             </button>
           </div>
         </div>
-      </form>
+      </form> -->
     </main>
   </section>
   <Popup
