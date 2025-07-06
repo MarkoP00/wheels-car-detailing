@@ -1,7 +1,7 @@
 <template>
   <Spinner v-if="isLoading"></Spinner>
   <section id="contact">
-    <main>
+    <main class="contactMain">
       <div class="formText">
         <h2>Contact us</h2>
         <p>
@@ -148,16 +148,18 @@ function closePopup() {
 
 <style scoped>
 #contact {
-  padding: 10px;
+  padding: 0px;
   /* added */
 }
-#contact main {
+.contactMain {
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 150px;
+  padding: 20px;
 }
+
 .formText {
   display: flex;
   flex-direction: column;
@@ -343,11 +345,11 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 
 @media (max-width: 700px) {
-  #contact {
-    padding: 0px;
+  .contactMain {
+    padding: 10px;
   }
   .custom-form {
-    width: 80%;
+    width: 85%;
     padding: 1rem;
   }
 
