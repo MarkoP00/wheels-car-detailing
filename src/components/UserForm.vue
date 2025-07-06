@@ -342,12 +342,12 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   #contact {
-    padding: 10px;
+    padding: 0px;
   }
   .custom-form {
-    width: 100%;
+    width: 80%;
     padding: 1rem;
   }
 
