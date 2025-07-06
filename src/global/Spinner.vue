@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="spinner_section">
     <div class="spinner">
       <div class="lds-roller">
         <div></div>
@@ -16,7 +16,7 @@
 </template>
 
 <style scoped>
-section {
+.spinner_section {
   position: fixed;
   top: 0;
   left: 0;

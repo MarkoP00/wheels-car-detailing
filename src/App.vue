@@ -28,9 +28,7 @@ import UserForm from "./components/UserForm.vue";
   color: #fff;
   font-size: 18px;
 }
-main {
-  margin-top: 100px;
-}
+
 section {
   display: flex;
   justify-content: center;

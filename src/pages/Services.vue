@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <main>
+  <section class="servicesSection">
+    <main class="servicesMain">
       <div class="servicesTitle">
         <h2>Excellence in Every Detail</h2>
         <p>
@@ -109,10 +109,10 @@ function activateCard(cardId) {
 </script>
 
 <style scoped>
-section {
+.servicesSection {
   gap: 20px;
 }
-main {
+.servicesMain {
   display: flex;
   flex-direction: column;
   gap: 100px;

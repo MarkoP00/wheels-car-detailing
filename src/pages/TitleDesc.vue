@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <main>
+  <section class="titleSection">
+    <main class="titleMain">
       <div class="title">
         <h3>Welcome to</h3>
         <h1>Wheels Car Detailing Centre</h1>
@@ -23,11 +23,11 @@ import ImagesHover from "../components/ImagesHover.vue";
 </script>
 
 <style scoped>
-section {
+.titleSection {
   min-height: 40vh;
 }
 
-main {
+.titleMain {
   max-width: 1000px;
   text-align: center;
   padding: 20px;

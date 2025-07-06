@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <main>
+  <section class="comercSection">
+    <main class="comercWrapper">
       <div class="comercMain">
         <div class="comercText">
           <h2>We value your time</h2>
@@ -23,8 +23,7 @@
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+            allowfullscreen></iframe>
         </div>
       </div>
     </main>
@@ -32,10 +31,10 @@
 </template>
 
 <style scoped>
-section {
+.comercSection {
   min-height: 90vh;
 }
-main {
+.comercWrapper {
   max-width: 1000px;
   padding: 20px;
   text-align: center;
