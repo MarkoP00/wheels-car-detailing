@@ -148,7 +148,7 @@ function closePopup() {
 
 <style scoped>
 #contact {
-  padding: 0px;
+  padding: 10px;
   /* added */
 }
 #contact main {
@@ -343,8 +343,11 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 
 @media (max-width: 650px) {
+  #contact {
+    padding: 10px;
+  }
   .custom-form {
-    width: 85%;
+    width: 100%;
     padding: 1rem;
   }
 
@@ -360,7 +363,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
   input,
   textarea {
-    padding: 0.7rem;
+    padding: 0.6rem;
   }
 }
 </style>
