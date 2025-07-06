@@ -190,6 +190,7 @@ function closePopup() {
 .custom-form {
   max-width: 600px;
   min-width: 280px;
+  width: 100%;
   background: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 12px;
@@ -346,10 +347,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 @media (max-width: 700px) {
   .contactMain {
-    padding: 20px;
+    padding: 0px;
   }
   .custom-form {
-    width: 80%;
+    max-width: 450px;
   }
 
   .formTitle h2 {
@@ -361,7 +362,9 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   .formContent {
     gap: 1.2rem;
   }
-
+  .custom-form {
+    max-width: 350px;
+  }
   input,
   textarea {
     padding: 0.6rem;
