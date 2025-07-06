@@ -346,11 +346,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 @media (max-width: 700px) {
   .contactMain {
-    padding: 10px;
+    padding: 20px;
   }
   .custom-form {
-    width: 85%;
-    padding: 1rem;
+    width: 80%;
   }
 
   .formTitle h2 {
