@@ -347,7 +347,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 @media (max-width: 700px) {
   .contactMain {
-    padding: 0px;
+    padding: 15px;
   }
   .custom-form {
     max-width: 450px;
@@ -362,12 +362,19 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   .formContent {
     gap: 1.2rem;
   }
+
   .custom-form {
     max-width: 350px;
   }
+
   input,
   textarea {
     padding: 0.6rem;
+  }
+}
+@media (max-width: 325px) {
+  .custom-form {
+    width: 250px;
   }
 }
 </style>
