@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Services from "@/pages/Services.vue";
 import UserForm from "@/components/UserForm.vue";
-import TitleDesc from "@/pages/TitleDesc.vue";
 import App from "@/App.vue";
 
 const routes = [
@@ -16,7 +15,11 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      return { el: to.hash, behavior: "smooth", offset: { top: 200 } };
+      return {
+        el: to.hash,
+        behavior: "smooth",
+        top: 100,
+      };
     }
     return { top: 0 };
   },
